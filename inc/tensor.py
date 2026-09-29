@@ -5,14 +5,21 @@ def mat_svd(X, top):
     U, s, VH = tlin.svd(X, full_matrices = (top > min(X.size())))
     return s[: top], U[:, : top]
 
-def mat_svd_eigh(X, top):
+def _mat_svd_eigh(X, top):
     """leading singular values and left singular vectors of an Hermitian matrix"""
     if X.size(dim = 0) > X.size(dim = 1):
-        s, V = mat_svd_eigh(X.T, top = top)
-        return s, X.mm(torch.where(s != 0, V / s, s)) # broadcast
+        s, V = _mat_svd_eigh(X.T, top = top)
+        return s, X.mm(torch.where(s != 0, V / s, s))
     else:
         s2, U = tlin.eigh(X.mm(X.T))
-        return s2[-top :].flip(-1).sqrt(), U[:, -top :].flip(-1)
+        return s2[-top :].flip(-1).clamp_min(0.).sqrt(), U[:, -top :].flip(-1)
+
+def mat_svd_eigh(X, top):
+    s, U = _mat_svd_eigh(X, top)
+    if U.size(dim = 1) < top:
+        s = F.pad(s, (0, top - s.size(dim = 0)))
+        U = F.pad(U, (0, top - U.size(dim = 1)))
+    return s, U
 
 def tensor_norm(X):
     """Frobenius norm of the tensor X"""

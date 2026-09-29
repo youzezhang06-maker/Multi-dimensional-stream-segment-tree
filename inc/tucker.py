@@ -2,6 +2,12 @@ from inc.tensor import *
 
 Tucker = namedtuple('Tucker', 'G U') # core G, factors U
 
+OP_COUNT = dict(als = 0, stitch = 0, partial = 0) # number of calls of each routine (for measuring cost); reset with reset_op_count()
+
+def reset_op_count():
+    for k in OP_COUNT:
+        OP_COUNT[k] = 0
+
 @torch.no_grad()
 def tucker_zeros(sizes, ranks, dtype, device):
     """Tucker decomposition of an empty tensor"""
@@ -13,6 +19,7 @@ def tucker_als(X, ranks, tol, maxiters, norm2 = None, verbose = False, mat_svd_f
     Tucker-ALS for Tucker decomposition
     adapted from the MATLAB implementation at https://gitlab.com/tensors/tensor_toolbox/-/blob/dev/tucker_als.m
     """
+    OP_COUNT['als'] += 1
     n_dims = len(ranks)
     assert n_dims > 1
     if norm2 is None:
@@ -48,13 +55,14 @@ def tucker_als(X, ranks, tol, maxiters, norm2 = None, verbose = False, mat_svd_f
     return Tucker(G = G, U = U), fit
 
 @torch.no_grad()
-def tucker_stitch(tuckers, ranks, tol, maxiters, norm2, verbose = False, mat_svd_fn = mat_svd):
-    """stitch subtensor Tucker decompositions along the first mode"""
+def tucker_stitch(tuckers, ranks, tol, maxiters, norm2, verbose = False, mat_svd_fn = mat_svd, axis = 0):
+    """stitch subtensor Tucker decompositions along mode `axis` (default: the first/temporal mode)"""
+    OP_COUNT['stitch'] += 1
     n_dims = len(ranks)
     assert n_dims > 1
     sizes = [Up.size(dim = 0) for Up in tuckers[0].U]
     for i in range(1, len(tuckers)):
-        sizes[0] += tuckers[i].U[0].size(dim = 0)
+        sizes[axis] += tuckers[i].U[axis].size(dim = 0)
     n_vecs = np.minimum(ranks, sizes).tolist()
     dtype = tuckers[0].G.dtype
     device = tuckers[0].G.device
@@ -71,19 +79,19 @@ def tucker_stitch(tuckers, ranks, tol, maxiters, norm2, verbose = False, mat_svd
     for it in pbar:
         # update non-temporal factor matrices
         for p in dims:
-            if p == 0: # the temporal mode
+            if p == axis: # the concatenation mode (temporal mode when axis == 0)
                 Y = torch.cat([
                     tensor_unfold(tensor_mats_mul(tucker.G, A_dim_list = [
                         ((U[q].T.mm(tucker.U[q]) if q != p else tucker.U[q]), q) for q in range(n_dims)
                     ]), dim = p) for tucker in tuckers
                 ], dim = 0)
-            else: # non-temporal modes
+            else: # shared modes
                 Y = 0.
                 t0 = 0
                 for tucker in tuckers:
-                    t1 = t0 + tucker.U[0].size(dim = 0)
+                    t1 = t0 + tucker.U[axis].size(dim = 0)
                     Y = Y + tensor_unfold(tensor_mats_mul(tucker.G, A_dim_list = [
-                        (((U[q] if q != 0 else U[q][t0 : t1]).T.mm(tucker.U[q]) if q != p else tucker.U[q]), q) for q in range(n_dims)
+                        (((U[q] if q != axis else U[q][t0 : t1]).T.mm(tucker.U[q]) if q != p else tucker.U[q]), q) for q in range(n_dims)
                     ]), dim = p)
                     t0 = t1
             U[p] = mat_svd_fn(Y, top = n_vecs[p])[1]
@@ -103,19 +111,20 @@ def tucker_stitch(tuckers, ranks, tol, maxiters, norm2, verbose = False, mat_svd
     return Tucker(G = G, U = U), fit
 
 @torch.no_grad()
-def tucker_partial(tucker, t0, t1, qr = True): # [t0, t1)
+def tucker_partial(tucker, t0, t1, qr = True, axis = 0): # [t0, t1) on mode `axis`
     """approximate subtensor Tucker decomposition"""
+    OP_COUNT['partial'] += 1
     G = tucker.G
-    U = [Up.clone() if p != 0 else Up for p, Up in enumerate(tucker.U)]
+    U = [Up.clone() if p != axis else Up for p, Up in enumerate(tucker.U)]
     if qr:
-        Q, R = tlin.qr(U[0][t0 : t1], mode = 'reduced')
-        rank = U[0].size(dim = 1)
+        Q, R = tlin.qr(U[axis][t0 : t1], mode = 'reduced')
+        rank = U[axis].size(dim = 1)
         if t1 - t0 < rank:
             Q = tensor_pad(Q, sizes = (t1 - t0, rank))
             R = tensor_pad(R, sizes = (rank, rank))
-        U[0] = Q
-        G = tensor_mat_mul(G, A = R, dim = 0)
+        U[axis] = Q
+        G = tensor_mat_mul(G, A = R, dim = axis)
     else:
         G = G.clone()
-        U[0] = U[0][t0 : t1].clone()
+        U[axis] = U[axis][t0 : t1].clone()
     return Tucker(G = G, U = U)
