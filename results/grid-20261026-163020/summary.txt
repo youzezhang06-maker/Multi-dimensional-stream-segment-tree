@@ -1,0 +1,50 @@
+KRStock: 6480 queries in 216 cells
+  ours_ms: best = product of (log L_i + d_i) (claim)
+      product of (log L_i + d_i) (claim) LOOCV rel. RMSE    8.17%   R2 0.9355   BIC    -263.5
+      product log (claim)        LOOCV rel. RMSE    9.13%   R2 0.9173   BIC    -226.0
+      product log + volume       LOOCV rel. RMSE    9.18%   R2 0.9175   BIC    -221.0
+      sum log                    LOOCV rel. RMSE    9.76%   R2 0.9075   BIC    -190.9
+      log Lt + log L1*log L2     LOOCV rel. RMSE    9.79%   R2 0.9062   BIC    -193.4
+      product of (L_i + d_i)     LOOCV rel. RMSE   10.32%   R2 0.8993   BIC    -167.4
+      sum linear                 LOOCV rel. RMSE   11.38%   R2 0.8747   BIC    -125.4
+      volume                     LOOCV rel. RMSE   17.73%   R2 0.6911   BIC      58.7
+      const                      LOOCV rel. RMSE   31.60%   R2 0.0000   BIC     307.1
+  tucket_ms: best = log Lt + log L1*log L2
+      log Lt + log L1*log L2     LOOCV rel. RMSE    4.38%   R2 0.8815   BIC   -1521.2
+      product of (log L_i + d_i) (claim) LOOCV rel. RMSE    4.40%   R2 0.8830   BIC   -1513.1
+      sum log                    LOOCV rel. RMSE    4.40%   R2 0.8815   BIC   -1515.8
+      sum linear                 LOOCV rel. RMSE    6.91%   R2 0.7078   BIC   -1320.7
+      product of (L_i + d_i)     LOOCV rel. RMSE    6.97%   R2 0.7083   BIC   -1315.8
+      product log + volume       LOOCV rel. RMSE    8.93%   R2 0.5159   BIC   -1217.1
+      product log (claim)        LOOCV rel. RMSE    9.11%   R2 0.4820   BIC   -1207.8
+      volume                     LOOCV rel. RMSE    9.26%   R2 0.4783   BIC   -1206.3
+      const                      LOOCV rel. RMSE   12.61%   R2 0.0000   BIC   -1071.1
+  als_ms: best = product of (L_i + d_i)
+      product of (L_i + d_i)     LOOCV rel. RMSE   10.40%   R2 0.9548   BIC   -1344.2
+      sum linear                 LOOCV rel. RMSE   12.07%   R2 0.9336   BIC   -1266.3
+      product of (log L_i + d_i) (claim) LOOCV rel. RMSE   15.06%   R2 0.8976   BIC   -1167.4
+      sum log                    LOOCV rel. RMSE   16.62%   R2 0.8731   BIC   -1126.3
+      log Lt + log L1*log L2     LOOCV rel. RMSE   16.67%   R2 0.8711   BIC   -1128.4
+      product log + volume       LOOCV rel. RMSE   17.25%   R2 0.8734   BIC   -1132.3
+      volume                     LOOCV rel. RMSE   19.02%   R2 0.8441   BIC   -1092.6
+      product log (claim)        LOOCV rel. RMSE   22.04%   R2 0.7719   BIC   -1010.5
+      const                      LOOCV rel. RMSE   45.91%   R2 0.0000   BIC    -696.6
+  leaf_pieces: best = product of (log L_i + d_i) (claim)
+      product of (log L_i + d_i) (claim) LOOCV rel. RMSE    8.85%   R2 0.8976   BIC     425.4
+      log Lt + log L1*log L2     LOOCV rel. RMSE    9.22%   R2 0.8871   BIC     435.7
+      product of (L_i + d_i)     LOOCV rel. RMSE    9.63%   R2 0.8800   BIC     459.7
+      sum log                    LOOCV rel. RMSE    9.67%   R2 0.8767   BIC     460.2
+      sum linear                 LOOCV rel. RMSE   10.24%   R2 0.8622   BIC     484.2
+      product log + volume       LOOCV rel. RMSE   13.67%   R2 0.7535   BIC     604.4
+      product log (claim)        LOOCV rel. RMSE   14.42%   R2 0.7204   BIC     626.3
+      volume                     LOOCV rel. RMSE   20.97%   R2 0.4082   BIC     788.2
+      const                      LOOCV rel. RMSE   27.16%   R2 0.0000   BIC     896.2
+  per query: leaf pieces == hits*s1*s2 for 100.0% of queries, == hits+s1+s2 for 1.9%
+  cell means: corr(leaf, mean H * mean s1 * mean s2) = 0.9919, corr(time, leaf) = 0.9269
+  mean count vs Lt: 16:2.45, 32:2.68, 64:2.81, 128:2.93, 256:3.05, 512:3.21   (1-D best of const/log/sqrt/linear: log L)
+  mean count vs L1: 5:2.49, 6:2.74, 8:2.88, 10:3.44, 12:3.60, 15:4.00   (1-D best of const/log/sqrt/linear: sqrt L)
+  mean count vs L2: 5:2.50, 6:2.74, 8:2.89, 10:3.43, 12:3.60, 15:4.00   (1-D best of const/log/sqrt/linear: sqrt L)
+  ours: median query 5.72 ms, Eq. 29 median 3.38%
+  tucket: median query 0.66 ms, Eq. 29 median 37.40%
+  als: median query 0.36 ms, Eq. 29 median 0.10%
+

@@ -1,0 +1,106 @@
+== AirQuality: shape (2048, 8, 6), ranks [5, 2, 1], levels Lt=[16, 32, 64, 128, 256, 512] L1=[3, 4, 5, 6, 7] L2=[2, 3, 4, 5], 120 cells x 30 endpoints = 3600 queries
+  building the multidimensional tree (query_dims = [1, 2]) ...
+    built 256/2048 slices, 16s
+    built 512/2048 slices, 31s
+    built 768/2048 slices, 47s
+    built 1024/2048 slices, 63s
+    built 1280/2048 slices, 79s
+    built 1536/2048 slices, 94s
+    built 1792/2048 slices, 110s
+    built 2048/2048 slices, 126s
+  built in 126s, 577371 STITCH, 98304 ALS
+    built 256/2048 slices, 0s
+    built 512/2048 slices, 0s
+    built 768/2048 slices, 0s
+    built 1024/2048 slices, 0s
+    built 1280/2048 slices, 0s
+    built 1536/2048 slices, 0s
+    built 1792/2048 slices, 1s
+    built 2048/2048 slices, 1s
+  original TUCKET built in 0.7s
+    100/3600 queries, 1s elapsed, ~39s left
+    200/3600 queries, 2s elapsed, ~38s left
+    300/3600 queries, 3s elapsed, ~37s left
+    400/3600 queries, 5s elapsed, ~36s left
+    500/3600 queries, 6s elapsed, ~35s left
+    600/3600 queries, 7s elapsed, ~34s left
+    700/3600 queries, 8s elapsed, ~33s left
+    800/3600 queries, 9s elapsed, ~31s left
+    900/3600 queries, 10s elapsed, ~30s left
+    1000/3600 queries, 11s elapsed, ~29s left
+    1100/3600 queries, 12s elapsed, ~28s left
+    1200/3600 queries, 14s elapsed, ~27s left
+    1300/3600 queries, 15s elapsed, ~26s left
+    1400/3600 queries, 16s elapsed, ~25s left
+    1500/3600 queries, 17s elapsed, ~24s left
+    1600/3600 queries, 18s elapsed, ~23s left
+    1700/3600 queries, 19s elapsed, ~22s left
+    1800/3600 queries, 21s elapsed, ~21s left
+    1900/3600 queries, 22s elapsed, ~19s left
+    2000/3600 queries, 23s elapsed, ~18s left
+    2100/3600 queries, 24s elapsed, ~17s left
+    2200/3600 queries, 25s elapsed, ~16s left
+    2300/3600 queries, 26s elapsed, ~15s left
+    2400/3600 queries, 27s elapsed, ~14s left
+    2500/3600 queries, 29s elapsed, ~13s left
+    2600/3600 queries, 30s elapsed, ~11s left
+    2700/3600 queries, 31s elapsed, ~10s left
+    2800/3600 queries, 32s elapsed, ~9s left
+    2900/3600 queries, 33s elapsed, ~8s left
+    3000/3600 queries, 34s elapsed, ~7s left
+    3100/3600 queries, 35s elapsed, ~6s left
+    3200/3600 queries, 36s elapsed, ~5s left
+    3300/3600 queries, 38s elapsed, ~3s left
+    3400/3600 queries, 39s elapsed, ~2s left
+    3500/3600 queries, 40s elapsed, ~1s left
+    3600/3600 queries, 41s elapsed, ~0s left
+AirQuality: 3600 queries in 120 cells
+  ours_ms: best = product of (L_i + d_i)
+      product of (L_i + d_i)     LOOCV rel. RMSE   11.95%   R2 0.8271   BIC    -267.2
+      sum linear                 LOOCV rel. RMSE   12.56%   R2 0.8063   BIC    -258.3
+      product of (log L_i + d_i) (claim) LOOCV rel. RMSE   12.81%   R2 0.8014   BIC    -250.5
+      product log + volume       LOOCV rel. RMSE   12.84%   R2 0.7931   BIC    -255.2
+      product log (claim)        LOOCV rel. RMSE   12.95%   R2 0.7857   BIC    -255.7
+      log Lt + log L1*log L2     LOOCV rel. RMSE   13.16%   R2 0.7834   BIC    -249.7
+      sum log                    LOOCV rel. RMSE   13.27%   R2 0.7827   BIC    -244.5
+      volume                     LOOCV rel. RMSE   18.12%   R2 0.5805   BIC    -175.1
+      const                      LOOCV rel. RMSE   27.79%   R2 -0.0000   BIC     -75.7
+  tucket_ms: best = log Lt + log L1*log L2
+      log Lt + log L1*log L2     LOOCV rel. RMSE    3.77%   R2 0.8345   BIC    -999.1
+      sum log                    LOOCV rel. RMSE    3.79%   R2 0.8351   BIC    -994.8
+      product of (log L_i + d_i) (claim) LOOCV rel. RMSE    3.80%   R2 0.8351   BIC    -990.0
+      sum linear                 LOOCV rel. RMSE    4.72%   R2 0.7451   BIC    -942.5
+      product of (L_i + d_i)     LOOCV rel. RMSE    4.82%   R2 0.7451   BIC    -937.7
+      product log + volume       LOOCV rel. RMSE    6.31%   R2 0.5468   BIC    -878.3
+      volume                     LOOCV rel. RMSE    6.38%   R2 0.5268   BIC    -877.9
+      product log (claim)        LOOCV rel. RMSE    7.96%   R2 0.2468   BIC    -822.1
+      const                      LOOCV rel. RMSE    9.11%   R2 0.0000   BIC    -792.9
+  als_ms: best = product of (L_i + d_i)
+      product of (L_i + d_i)     LOOCV rel. RMSE    9.87%   R2 0.9670   BIC    -937.1
+      sum linear                 LOOCV rel. RMSE    9.93%   R2 0.9646   BIC    -933.6
+      product log + volume       LOOCV rel. RMSE   22.73%   R2 0.8238   BIC    -745.8
+      volume                     LOOCV rel. RMSE   25.25%   R2 0.7715   BIC    -719.5
+      log Lt + log L1*log L2     LOOCV rel. RMSE   26.70%   R2 0.7370   BIC    -697.8
+      sum log                    LOOCV rel. RMSE   26.78%   R2 0.7399   BIC    -694.3
+      product of (log L_i + d_i) (claim) LOOCV rel. RMSE   27.13%   R2 0.7422   BIC    -690.6
+      product log (claim)        LOOCV rel. RMSE   42.38%   R2 0.3215   BIC    -588.8
+      const                      LOOCV rel. RMSE   51.03%   R2 0.0000   BIC    -547.1
+  leaf_pieces: best = product of (L_i + d_i)
+      product of (L_i + d_i)     LOOCV rel. RMSE   10.34%   R2 0.8603   BIC     105.5
+      product of (log L_i + d_i) (claim) LOOCV rel. RMSE   10.62%   R2 0.8521   BIC     112.3
+      sum linear                 LOOCV rel. RMSE   10.84%   R2 0.8434   BIC     114.4
+      log Lt + log L1*log L2     LOOCV rel. RMSE   11.07%   R2 0.8341   BIC     116.5
+      sum log                    LOOCV rel. RMSE   11.10%   R2 0.8354   BIC     120.4
+      product log + volume       LOOCV rel. RMSE   12.24%   R2 0.7973   BIC     140.5
+      product log (claim)        LOOCV rel. RMSE   13.06%   R2 0.7639   BIC     154.1
+      volume                     LOOCV rel. RMSE   21.66%   R2 0.3492   BIC     275.8
+      const                      LOOCV rel. RMSE   26.69%   R2 -0.0000   BIC     322.5
+  per query: leaf pieces == hits*s1*s2 for 100.0% of queries, == hits+s1+s2 for 10.3%
+  cell means: corr(leaf, mean H * mean s1 * mean s2) = 0.9949, corr(time, leaf) = 0.9452
+  mean count vs Lt: 16:2.44, 32:2.71, 64:2.79, 128:2.92, 256:3.11, 512:3.22   (1-D best of const/log/sqrt/linear: log L)
+  mean count vs L1: 3:2.00, 4:2.00, 5:2.51, 6:2.67, 7:3.00   (1-D best of const/log/sqrt/linear: L)
+  mean count vs L2: 2:1.60, 3:1.75, 4:2.33, 5:2.50   (1-D best of const/log/sqrt/linear: L)
+  ours: median query 2.39 ms, Eq. 29 median 4.38%
+  tucket: median query 0.39 ms, Eq. 29 median 50.24%
+  als: median query 0.16 ms, Eq. 29 median 0.97%
+saved results to results/grid-20261026-164831/

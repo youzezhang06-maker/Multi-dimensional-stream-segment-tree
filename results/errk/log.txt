@@ -1,0 +1,348 @@
+== Traffic (error vs k): shape (2033, 16, 16), ranks [5, 4, 4], levels Lt=[16, 32, 64, 128, 256] L1=[5, 6, 8, 10, 12, 15] L2=[5, 6, 8, 10, 12, 15], 5400 base queries, trees k = 0, 1, 1, 2
+  tree query_dims = []: building ...
+    built 256/2033 slices, 0s
+    built 512/2033 slices, 0s
+    built 768/2033 slices, 0s
+    built 1024/2033 slices, 0s
+    built 1280/2033 slices, 0s
+    built 1536/2033 slices, 1s
+    built 1792/2033 slices, 1s
+  built in 1s (2025 STITCH)
+    500/5400 base queries
+    1000/5400 base queries
+    1500/5400 base queries
+    2000/5400 base queries
+    2500/5400 base queries
+    3000/5400 base queries
+    3500/5400 base queries
+    4000/5400 base queries
+    4500/5400 base queries
+    5000/5400 base queries
+  tree query_dims = [1]: building ...
+    built 256/2033 slices, 3s
+    built 512/2033 slices, 6s
+    built 768/2033 slices, 9s
+    built 1024/2033 slices, 12s
+    built 1280/2033 slices, 15s
+    built 1536/2033 slices, 18s
+    built 1792/2033 slices, 21s
+  built in 24s (93270 STITCH)
+    500/5400 base queries
+    1000/5400 base queries
+    1500/5400 base queries
+    2000/5400 base queries
+    2500/5400 base queries
+    3000/5400 base queries
+    3500/5400 base queries
+    4000/5400 base queries
+    4500/5400 base queries
+    5000/5400 base queries
+  tree query_dims = [2]: building ...
+    built 256/2033 slices, 3s
+    built 512/2033 slices, 6s
+    built 768/2033 slices, 9s
+    built 1024/2033 slices, 12s
+    built 1280/2033 slices, 15s
+    built 1536/2033 slices, 18s
+    built 1792/2033 slices, 21s
+  built in 24s (93270 STITCH)
+    500/5400 base queries
+    1000/5400 base queries
+    1500/5400 base queries
+    2000/5400 base queries
+    2500/5400 base queries
+    3000/5400 base queries
+    3500/5400 base queries
+    4000/5400 base queries
+    4500/5400 base queries
+    5000/5400 base queries
+  tree query_dims = [1, 2]: building ...
+    built 256/2033 slices, 96s
+    built 512/2033 slices, 194s
+    built 768/2033 slices, 291s
+    built 1024/2033 slices, 391s
+    built 1280/2033 slices, 493s
+    built 1536/2033 slices, 589s
+    built 1792/2033 slices, 683s
+  built in 774s (3379290 STITCH)
+    500/5400 base queries
+    1000/5400 base queries
+    1500/5400 base queries
+    2000/5400 base queries
+    2500/5400 base queries
+    3000/5400 base queries
+    3500/5400 base queries
+    4000/5400 base queries
+    4500/5400 base queries
+    5000/5400 base queries
+Traffic: reconstruction error vs k (medians; eq29 = err_tree / err_als - 1)
+                  n  err_tree  err_als    eq29
+family     k                                  
+restricted 1  10800    0.1149   0.1097  0.0462
+           2   5400    0.1063   0.1016  0.0442
+same_box   0   5400    0.1223   0.1164  0.0522
+           1  10800    0.1225   0.1164  0.0537
+           2   5400    0.1224   0.1164  0.0534
+saved results to results/errk/
+== USStock (error vs k): shape (2000, 16, 16), ranks [5, 4, 4], levels Lt=[16, 32, 64, 128, 256] L1=[5, 6, 8, 10, 12, 15] L2=[5, 6, 8, 10, 12, 15], 5400 base queries, trees k = 0, 1, 1, 2
+  tree query_dims = []: building ...
+    built 256/2000 slices, 0s
+    built 512/2000 slices, 0s
+    built 768/2000 slices, 0s
+    built 1024/2000 slices, 1s
+    built 1280/2000 slices, 1s
+    built 1536/2000 slices, 1s
+    built 1792/2000 slices, 1s
+  built in 1s (1994 STITCH)
+    500/5400 base queries
+    1000/5400 base queries
+    1500/5400 base queries
+    2000/5400 base queries
+    2500/5400 base queries
+    3000/5400 base queries
+    3500/5400 base queries
+    4000/5400 base queries
+    4500/5400 base queries
+    5000/5400 base queries
+  tree query_dims = [1]: building ...
+    built 256/2000 slices, 3s
+    built 512/2000 slices, 6s
+    built 768/2000 slices, 10s
+    built 1024/2000 slices, 13s
+    built 1280/2000 slices, 16s
+    built 1536/2000 slices, 20s
+    built 1792/2000 slices, 23s
+  built in 26s (91814 STITCH)
+    500/5400 base queries
+    1000/5400 base queries
+    1500/5400 base queries
+    2000/5400 base queries
+    2500/5400 base queries
+    3000/5400 base queries
+    3500/5400 base queries
+    4000/5400 base queries
+    4500/5400 base queries
+    5000/5400 base queries
+  tree query_dims = [2]: building ...
+    built 256/2000 slices, 3s
+    built 512/2000 slices, 6s
+    built 768/2000 slices, 9s
+    built 1024/2000 slices, 13s
+    built 1280/2000 slices, 16s
+    built 1536/2000 slices, 19s
+    built 1792/2000 slices, 22s
+  built in 25s (91814 STITCH)
+    500/5400 base queries
+    1000/5400 base queries
+    1500/5400 base queries
+    2000/5400 base queries
+    2500/5400 base queries
+    3000/5400 base queries
+    3500/5400 base queries
+    4000/5400 base queries
+    4500/5400 base queries
+    5000/5400 base queries
+  tree query_dims = [1, 2]: building ...
+    built 256/2000 slices, 94s
+    built 512/2000 slices, 190s
+    built 768/2000 slices, 286s
+    built 1024/2000 slices, 382s
+    built 1280/2000 slices, 479s
+    built 1536/2000 slices, 589s
+    built 1792/2000 slices, 686s
+  built in 764s (3326234 STITCH)
+    500/5400 base queries
+    1000/5400 base queries
+    1500/5400 base queries
+    2000/5400 base queries
+    2500/5400 base queries
+    3000/5400 base queries
+    3500/5400 base queries
+    4000/5400 base queries
+    4500/5400 base queries
+    5000/5400 base queries
+USStock: reconstruction error vs k (medians; eq29 = err_tree / err_als - 1)
+                  n  err_tree  err_als    eq29
+family     k                                  
+restricted 1  10800    0.5325   0.5084  0.0434
+           2   5400    0.4740   0.4559  0.0359
+same_box   0   5400    0.5919   0.5524  0.0664
+           1  10800    0.5916   0.5524  0.0668
+           2   5400    0.5916   0.5524  0.0668
+saved results to results/errk/
+== KRStock (error vs k): shape (2048, 16, 16), ranks [5, 4, 4], levels Lt=[16, 32, 64, 128, 256, 512] L1=[5, 6, 8, 10, 12, 15] L2=[5, 6, 8, 10, 12, 15], 6480 base queries, trees k = 0, 1, 1, 2
+  tree query_dims = []: building ...
+    built 256/2048 slices, 0s
+    built 512/2048 slices, 0s
+    built 768/2048 slices, 0s
+    built 1024/2048 slices, 0s
+    built 1280/2048 slices, 1s
+    built 1536/2048 slices, 1s
+    built 1792/2048 slices, 1s
+    built 2048/2048 slices, 1s
+  built in 1s (2047 STITCH)
+    500/6480 base queries
+    1000/6480 base queries
+    1500/6480 base queries
+    2000/6480 base queries
+    2500/6480 base queries
+    3000/6480 base queries
+    3500/6480 base queries
+    4000/6480 base queries
+    4500/6480 base queries
+    5000/6480 base queries
+    5500/6480 base queries
+    6000/6480 base queries
+  tree query_dims = [1]: building ...
+    built 256/2048 slices, 3s
+    built 512/2048 slices, 6s
+    built 768/2048 slices, 10s
+    built 1024/2048 slices, 13s
+    built 1280/2048 slices, 16s
+    built 1536/2048 slices, 20s
+    built 1792/2048 slices, 23s
+    built 2048/2048 slices, 26s
+  built in 26s (94177 STITCH)
+    500/6480 base queries
+    1000/6480 base queries
+    1500/6480 base queries
+    2000/6480 base queries
+    2500/6480 base queries
+    3000/6480 base queries
+    3500/6480 base queries
+    4000/6480 base queries
+    4500/6480 base queries
+    5000/6480 base queries
+    5500/6480 base queries
+    6000/6480 base queries
+  tree query_dims = [2]: building ...
+    built 256/2048 slices, 3s
+    built 512/2048 slices, 6s
+    built 768/2048 slices, 9s
+    built 1024/2048 slices, 13s
+    built 1280/2048 slices, 16s
+    built 1536/2048 slices, 19s
+    built 1792/2048 slices, 23s
+    built 2048/2048 slices, 26s
+  built in 26s (94177 STITCH)
+    500/6480 base queries
+    1000/6480 base queries
+    1500/6480 base queries
+    2000/6480 base queries
+    2500/6480 base queries
+    3000/6480 base queries
+    3500/6480 base queries
+    4000/6480 base queries
+    4500/6480 base queries
+    5000/6480 base queries
+    5500/6480 base queries
+    6000/6480 base queries
+  tree query_dims = [1, 2]: building ...
+    built 256/2048 slices, 97s
+    built 512/2048 slices, 196s
+    built 768/2048 slices, 292s
+    built 1024/2048 slices, 392s
+    built 1280/2048 slices, 490s
+    built 1536/2048 slices, 591s
+    built 1792/2048 slices, 708s
+    built 2048/2048 slices, 814s
+  built in 814s (3411007 STITCH)
+    500/6480 base queries
+    1000/6480 base queries
+    1500/6480 base queries
+    2000/6480 base queries
+    2500/6480 base queries
+    3000/6480 base queries
+    3500/6480 base queries
+    4000/6480 base queries
+    4500/6480 base queries
+    5000/6480 base queries
+    5500/6480 base queries
+    6000/6480 base queries
+KRStock: reconstruction error vs k (medians; eq29 = err_tree / err_als - 1)
+                  n  err_tree  err_als    eq29
+family     k                                  
+restricted 1  12960    0.4292   0.4076  0.0434
+           2   6480    0.3874   0.3730  0.0338
+same_box   0   6480    0.4551   0.4277  0.0583
+           1  12960    0.4583   0.4277  0.0608
+           2   6480    0.4591   0.4277  0.0625
+saved results to results/errk/
+== AirQuality (error vs k): shape (2048, 8, 6), ranks [5, 2, 1], levels Lt=[16, 32, 64, 128, 256, 512] L1=[3, 4, 5, 6, 7] L2=[2, 3, 4, 5], 3600 base queries, trees k = 0, 1, 1, 2
+  tree query_dims = []: building ...
+    built 256/2048 slices, 0s
+    built 512/2048 slices, 0s
+    built 768/2048 slices, 0s
+    built 1024/2048 slices, 0s
+    built 1280/2048 slices, 0s
+    built 1536/2048 slices, 0s
+    built 1792/2048 slices, 1s
+    built 2048/2048 slices, 1s
+  built in 1s (2047 STITCH)
+    500/3600 base queries
+    1000/3600 base queries
+    1500/3600 base queries
+    2000/3600 base queries
+    2500/3600 base queries
+    3000/3600 base queries
+    3500/3600 base queries
+  tree query_dims = [1]: building ...
+    built 256/2048 slices, 1s
+    built 512/2048 slices, 3s
+    built 768/2048 slices, 4s
+    built 1024/2048 slices, 5s
+    built 1280/2048 slices, 7s
+    built 1536/2048 slices, 8s
+    built 1792/2048 slices, 10s
+    built 2048/2048 slices, 11s
+  built in 11s (45041 STITCH)
+    500/3600 base queries
+    1000/3600 base queries
+    1500/3600 base queries
+    2000/3600 base queries
+    2500/3600 base queries
+    3000/3600 base queries
+    3500/3600 base queries
+  tree query_dims = [2]: building ...
+    built 256/2048 slices, 1s
+    built 512/2048 slices, 2s
+    built 768/2048 slices, 3s
+    built 1024/2048 slices, 4s
+    built 1280/2048 slices, 5s
+    built 1536/2048 slices, 6s
+    built 1792/2048 slices, 7s
+    built 2048/2048 slices, 8s
+  built in 8s (32757 STITCH)
+    500/3600 base queries
+    1000/3600 base queries
+    1500/3600 base queries
+    2000/3600 base queries
+    2500/3600 base queries
+    3000/3600 base queries
+    3500/3600 base queries
+  tree query_dims = [1, 2]: building ...
+    built 256/2048 slices, 16s
+    built 512/2048 slices, 32s
+    built 768/2048 slices, 48s
+    built 1024/2048 slices, 64s
+    built 1280/2048 slices, 80s
+    built 1536/2048 slices, 96s
+    built 1792/2048 slices, 112s
+    built 2048/2048 slices, 129s
+  built in 129s (577371 STITCH)
+    500/3600 base queries
+    1000/3600 base queries
+    1500/3600 base queries
+    2000/3600 base queries
+    2500/3600 base queries
+    3000/3600 base queries
+    3500/3600 base queries
+AirQuality: reconstruction error vs k (medians; eq29 = err_tree / err_als - 1)
+                 n  err_tree  err_als    eq29
+family     k                                 
+restricted 1  7200    0.1436   0.1367  0.0364
+           2  3600    0.1073   0.0980  0.0438
+same_box   0  3600    0.1574   0.1511  0.0319
+           1  7200    0.1575   0.1511  0.0315
+           2  3600    0.1575   0.1511  0.0334
+saved results to results/errk/

@@ -1,0 +1,36 @@
+Traffic: reconstruction error vs k (medians; eq29 = err_tree / err_als - 1)
+                  n  err_tree  err_als    eq29
+family     k                                  
+restricted 1  10800    0.1149   0.1097  0.0462
+           2   5400    0.1063   0.1016  0.0442
+same_box   0   5400    0.1223   0.1164  0.0522
+           1  10800    0.1225   0.1164  0.0537
+           2   5400    0.1224   0.1164  0.0534
+
+USStock: reconstruction error vs k (medians; eq29 = err_tree / err_als - 1)
+                  n  err_tree  err_als    eq29
+family     k                                  
+restricted 1  10800    0.5325   0.5084  0.0434
+           2   5400    0.4740   0.4559  0.0359
+same_box   0   5400    0.5919   0.5524  0.0664
+           1  10800    0.5916   0.5524  0.0668
+           2   5400    0.5916   0.5524  0.0668
+
+KRStock: reconstruction error vs k (medians; eq29 = err_tree / err_als - 1)
+                  n  err_tree  err_als    eq29
+family     k                                  
+restricted 1  12960    0.4292   0.4076  0.0434
+           2   6480    0.3874   0.3730  0.0338
+same_box   0   6480    0.4551   0.4277  0.0583
+           1  12960    0.4583   0.4277  0.0608
+           2   6480    0.4591   0.4277  0.0625
+
+AirQuality: reconstruction error vs k (medians; eq29 = err_tree / err_als - 1)
+                 n  err_tree  err_als    eq29
+family     k                                 
+restricted 1  7200    0.1436   0.1367  0.0364
+           2  3600    0.1073   0.0980  0.0438
+same_box   0  3600    0.1574   0.1511  0.0319
+           1  7200    0.1575   0.1511  0.0315
+           2  3600    0.1575   0.1511  0.0334
+

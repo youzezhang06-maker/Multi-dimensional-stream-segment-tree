@@ -1,0 +1,50 @@
+Traffic: 5400 queries in 180 cells
+  ours_ms: best = product of (log L_i + d_i) (claim)
+      product of (log L_i + d_i) (claim) LOOCV rel. RMSE    7.31%   R2 0.9103   BIC    -352.0
+      product log + volume       LOOCV rel. RMSE    7.83%   R2 0.8950   BIC    -334.1
+      product log (claim)        LOOCV rel. RMSE    7.89%   R2 0.8925   BIC    -335.1
+      sum log                    LOOCV rel. RMSE    8.05%   R2 0.8908   BIC    -321.8
+      log Lt + log L1*log L2     LOOCV rel. RMSE    8.20%   R2 0.8854   BIC    -318.4
+      product of (L_i + d_i)     LOOCV rel. RMSE    8.91%   R2 0.8690   BIC    -283.9
+      sum linear                 LOOCV rel. RMSE    9.33%   R2 0.8538   BIC    -269.3
+      volume                     LOOCV rel. RMSE   14.05%   R2 0.6631   BIC    -129.5
+      const                      LOOCV rel. RMSE   23.97%   R2 0.0000   BIC      61.2
+  tucket_ms: best = log Lt + log L1*log L2
+      log Lt + log L1*log L2     LOOCV rel. RMSE    3.60%   R2 0.8612   BIC   -1460.2
+      product of (log L_i + d_i) (claim) LOOCV rel. RMSE    3.61%   R2 0.8623   BIC   -1451.2
+      sum log                    LOOCV rel. RMSE    3.61%   R2 0.8621   BIC   -1456.2
+      product of (L_i + d_i)     LOOCV rel. RMSE    5.42%   R2 0.6896   BIC   -1304.9
+      sum linear                 LOOCV rel. RMSE    5.42%   R2 0.6897   BIC   -1310.2
+      product log + volume       LOOCV rel. RMSE    7.32%   R2 0.4330   BIC   -1206.8
+      volume                     LOOCV rel. RMSE    7.41%   R2 0.4152   BIC   -1206.5
+      product log (claim)        LOOCV rel. RMSE    7.43%   R2 0.4005   BIC   -1202.0
+      const                      LOOCV rel. RMSE    9.56%   R2 0.0000   BIC   -1115.1
+  als_ms: best = product of (L_i + d_i)
+      product of (L_i + d_i)     LOOCV rel. RMSE    7.47%   R2 0.9404   BIC   -1431.3
+      product of (log L_i + d_i) (claim) LOOCV rel. RMSE    9.57%   R2 0.9020   BIC   -1341.7
+      sum linear                 LOOCV rel. RMSE    9.95%   R2 0.8912   BIC   -1328.0
+      product log + volume       LOOCV rel. RMSE   10.04%   R2 0.8892   BIC   -1330.0
+      volume                     LOOCV rel. RMSE   10.35%   R2 0.8811   BIC   -1322.5
+      log Lt + log L1*log L2     LOOCV rel. RMSE   11.10%   R2 0.8625   BIC   -1291.2
+      sum log                    LOOCV rel. RMSE   11.12%   R2 0.8626   BIC   -1286.1
+      product log (claim)        LOOCV rel. RMSE   14.43%   R2 0.7630   BIC   -1198.3
+      const                      LOOCV rel. RMSE   29.36%   R2 0.0000   BIC    -944.4
+  leaf_pieces: best = product of (log L_i + d_i) (claim)
+      product of (log L_i + d_i) (claim) LOOCV rel. RMSE    7.82%   R2 0.9150   BIC     310.4
+      log Lt + log L1*log L2     LOOCV rel. RMSE    8.33%   R2 0.9021   BIC     325.4
+      sum log                    LOOCV rel. RMSE    8.83%   R2 0.8911   BIC     349.7
+      product of (L_i + d_i)     LOOCV rel. RMSE    9.15%   R2 0.8857   BIC     363.7
+      sum linear                 LOOCV rel. RMSE    9.82%   R2 0.8657   BIC     387.4
+      product log + volume       LOOCV rel. RMSE   10.72%   R2 0.8392   BIC     414.6
+      product log (claim)        LOOCV rel. RMSE   11.70%   R2 0.8040   BIC     445.1
+      volume                     LOOCV rel. RMSE   18.68%   R2 0.5009   BIC     613.4
+      const                      LOOCV rel. RMSE   26.31%   R2 0.0000   BIC     733.3
+  per query: leaf pieces == hits*s1*s2 for 100.0% of queries, == hits+s1+s2 for 1.9%
+  cell means: corr(leaf, mean H * mean s1 * mean s2) = 0.9913, corr(time, leaf) = 0.9492
+  mean count vs Lt: 16:2.41, 32:2.70, 64:2.85, 128:2.99, 256:3.19   (1-D best of const/log/sqrt/linear: log L)
+  mean count vs L1: 5:2.50, 6:2.73, 8:2.89, 10:3.41, 12:3.60, 15:4.00   (1-D best of const/log/sqrt/linear: sqrt L)
+  mean count vs L2: 5:2.50, 6:2.72, 8:2.90, 10:3.43, 12:3.60, 15:4.00   (1-D best of const/log/sqrt/linear: sqrt L)
+  ours: median query 4.47 ms, Eq. 29 median 4.42%
+  tucket: median query 0.47 ms, Eq. 29 median 31.90%
+  als: median query 0.22 ms, Eq. 29 median 1.63%
+

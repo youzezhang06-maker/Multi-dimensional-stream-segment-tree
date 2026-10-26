@@ -1,0 +1,28 @@
+{
+ "datasets": [
+  "AirQuality"
+ ],
+ "data_root": "inputs/grid",
+ "out_root": "results",
+ "out": "",
+ "queries_dir": "",
+ "methods": "ours,tucket,als",
+ "T": 2048,
+ "time_rank": 5,
+ "static_rank_div": 4,
+ "time_min": 16,
+ "time_ratio": 2,
+ "time_max_frac": 0.25,
+ "n_static_levels": 6,
+ "n_reps": 30,
+ "time_reps": 3,
+ "tol": 0.01,
+ "maxiters": 20,
+ "als_tol": 1e-06,
+ "als_maxiters": 200,
+ "prune": 0.7,
+ "threads": 4,
+ "seed": 998244353,
+ "task": "complexity",
+ "quick": false
+}
